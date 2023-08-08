@@ -30,10 +30,11 @@
                     <td>{{ gpa }}</td>
                     <td>{{ studentYear }}</td>
                     <td>
-                        <a class="btn btn-primary" href="http://">Edit</a>
-                        <a class="btn btn-danger" href="https://">Delete</a>
+                        <a class="btn btn-primary" href="/student/edit/">Edit</a>
+                        <a class="btn btn-danger" href="student/delete/" onclick="return confirm('Are you sure to delete this?')">Delete</a>
                     </td>
+                    {{/each}}
                 </tr>
-        {{/each}}
+        
     </table>
 </div>

@@ -9,5 +9,5 @@ var StudentSchema = mongoose.Schema({
     gpa: Number,
     studentYear: Number
 });
-const StudentModel = mongoose.model('student', StudentSchema);
-module.exports = StudentSchema;
+const StudentModel = mongoose.model('student', StudentSchema, 'student');
+module.exports = StudentModel;
