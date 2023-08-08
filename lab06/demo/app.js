@@ -6,29 +6,26 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-//4A. tạo router cho từng model
-var mobileRouter = require ('./routes/mobile');
-var laptopRouter = require ('./routes/laptop');
-var studentRouter = require ('./routes/student');
 
 var app = express();
 
-//5. cấu hình dateFormat để format ngày tháng
+//1. khai báo mongoose 
+var mongoose = require('mongoose');
+//note: cần ghi rõ tên của DB ở cuối url của connection string. ví dụ: "demo"
+var db = "mongodb+srv://longndt:wxpY5GLB4We8hTDQ@cluster0.cc35aqx.mongodb.net/demo";
+
+mongoose.connect(db)
+.then(() => console.log ('connect to db ok !'))
+.catch((err) => console.log ('connect to db error !'));
+
+//2. khai báo body-parser
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false}));
+
+//3. khai báo dateFormat của HBS
 var hbs = require('hbs');
 hbs.registerHelper('dateFormat', require('handlebars-dateformat')); 
 
-
-//1. cấu hình body-parser (lấy input data từ form)
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended : false}));
-
-//2. cấu hình mongoose (làm việc và tương tác với DB)
-var mongoose = require('mongoose');
-//note: cần khai báo db name trong uri. vd: "gch1103"
-var db = "mongodb+srv://longndt:wxpY5GLB4We8hTDQ@cluster0.cc35aqx.mongodb.net/gch1103";
-mongoose.connect(db)
-.then(() => console.log('ok'))
-.catch((error) => console.log('failed'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,10 +39,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-//4B. set url cho từng router
-app.use('/mobile', mobileRouter);
-app.use('/laptop', laptopRouter);
-app.use('/student', studentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -63,8 +56,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//3. cấu hình port cho web server để deploy lên Render
-var port = process.env.PORT || 3001;
-app.listen(port);
+//cần đổi port của server khi deploy web lên cloud
+app.listen(process.env.PORT || 3001);
 
 module.exports = app;
