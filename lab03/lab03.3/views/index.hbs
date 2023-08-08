@@ -1,0 +1,22 @@
+<h1>{{country}}</h1>
+<h1>{{year}}</h1>
+<h1>{{grade}}</h1>
+<h1>{{pass}}</h1>
+<h1>{{gender}}</h1>
+
+<ul>
+    {{#each sports}}
+        <li>{{this}}</li>
+    {{/each}}
+</ul>
+
+<table>
+    <tr>
+        <th>Sports</th>
+    </tr>
+    {{#each sports}}
+    <tr>
+        {{this}}
+    </tr>
+    {{/each}}
+</table>
