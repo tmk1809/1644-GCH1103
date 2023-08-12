@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get('/', async(req, res)=>{
     var students = await StudentModel.find();
-    res.render('studentList', {students : students});
+    res.render('student/studentList', {students : students});
 });
 
 router.get('/delete/:id', async(req, res)=>{
@@ -22,7 +22,7 @@ router.get('/add', (req, res)=>{
 })
 
 router.post('/add', (req, res)=>{
-
+    var student = req.body;
 })
 
 module.exports = router;

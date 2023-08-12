@@ -11,11 +11,16 @@
         </div>
         <div class="form-group">
             <label class="h5 text text-success" for="">Gender</label>
-            <input class="form-control" type="text" name="gender" required>
+            Male <input type="radio" name="gender" value="male">
+            Female <input type="radio" name="gender" value="female">
         </div>
         <div class="form-group">
-            <label class="h5 text text-success" for="">Department</label>
-            <input class="form-control" type="text" name="department" required>
+            <label class="h5 text text-success" for="">Department</label><br>
+            <select name="department">
+                <option value="Computing">Computing</option>
+                <option value="Business">Business</option>
+                <option value="Graphic Design">Graphic Design</option>
+            </select>
         </div>
         <div class="form-group">
             <label class="h5 text text-success" for="">Class</label>
@@ -23,7 +28,7 @@
         </div>
         <div class="form-group">
             <label class="h5 text text-success" for="">Image</label>
-            <input class="form-control" type="text" name="image" required>
+            <input class="form-control" type="file" name="image" required>
         </div>
         <div class="form-group">
             <label class="h5 text text-success" for="">GPA</label>
